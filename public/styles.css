@@ -1,3 +1,7 @@
+:root {
+  --light-purple: #B47AEA;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -23,6 +27,7 @@
 }
 
 .link {
+  font-size: 1.1rem;
   display: inline-block;
   text-decoration: none;
   color: #02020A;
@@ -31,11 +36,38 @@
 
 .link.catalog {
   border-radius: 0.5rem;
-  background-color: #B47AEA;
+  background-color: var(--light-purple);
   color: white;
 }
 
 .link.ordinary:hover {
-  color: #B47AEA;
+  color: var(--light-purple);
   transform: scale(1.2);
+}
+
+.form-container {
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+}
+
+.input {
+  margin-bottom: 1.5rem;
+}
+
+.submitBtn {
+  width: 50%;
+  padding: 0.8rem;
+  background-color: var(--light-purple);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
 }

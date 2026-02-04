@@ -1,0 +1,50 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+  <main class="container">
+    <div>
+      <h1>Add Product</h1>
+    </div>
+    <div class="form-container">
+      <form action="/new" method="POST">
+        <div class="input">
+        <label for="category">Category:</label>
+        <select name="category_id" id="category" required>
+          <% listedCategories.forEach((category) => { %>
+            <option value="<%= category.id %>">
+              <%= category.category_name %>
+            </option>
+          <% }) %>
+        </select>
+        </div>
+        <div class="input">
+        <label for="name">Name: </label>
+        <input type="text" name="pname" id="product_name" placeholder="Enter a product name" required>
+        </div>
+        <div class="input">
+        <label for="price">Price: </label>
+        <input type="number" name="price" id="product_price" placeholder="Enter a product price" required>
+        </div>
+        <div class="input">
+        <label for="name">Quantity: </label>
+        <input  type="number" name="quantity" id="quantity" placeholder="Enter quantity of product" required>
+        </div>
+        <div class="input">
+        <label for="name">Brand: </label>
+          <input type="text" name="brand" id="brand" placeholder="Enter brand name" required>
+        </div>
+        <div class="input">
+          <label for="description">Description:</label>
+          <textarea name="description" maxlength="300"></textarea>
+        </div>
+        <div class="input">
+          <label for="image">Image:</label>
+            <input type="file" name="src" accept="image/png, image/jpeg, image/svg+xml"/>
+        </div>  
+        <button class="submitBtn">Submit</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
