@@ -7,7 +7,7 @@
       <h1>Add Product</h1>
     </div>
     <div class="form-container">
-      <form action="/products/new" method="POST">
+      <form action="/products/new" method="POST" enctype="multipart/form-data">
         <div class="input">
         <label for="category">Category:</label>
         <select name="category_id" id="category" required>
@@ -40,7 +40,7 @@
         </div>
         <div class="input">
           <label for="image">Image:</label>
-            <input type="file" name="src" accept="image/png, image/jpeg, image/svg+xml"/>
+            <input type="file" name="image" accept="image/png, image/jpeg, image/svg+xml"/>
         </div>  
         <button class="submitBtn">Submit</button>
       </form>
