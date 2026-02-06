@@ -45,6 +45,17 @@
   transform: scale(1.2);
 }
 
+.page-content {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header-addbtn {
+  display: flex;
+  gap: 1rem;
+  align-items: center
+}  
+
 .form-container {
   margin: 0 auto;
   background: #fff;

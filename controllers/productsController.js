@@ -5,7 +5,8 @@ export async function getAddProductPage(req, res) {
     const categories = await queries.getAllCategories();
     
     res.render('form', { 
-      listedCategories: categories 
+      listedCategories: categories,
+      title : "Add Product" 
     });
   } catch (error) {
     console.error("Error getting categories:", error);
