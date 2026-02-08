@@ -6,27 +6,27 @@
     <div class="main-content">
       <div class="header-addBtn">    
         <h1>Products</h1>
-        <a href="/products/new">Add product</a>
+        <a class="addProductsBtn" href="/products/new">Add product</a>
       </div> 
       <div class="products-container">
         <% products.forEach((product) => { %>
-          <a href="/products/<%=product.id%>">
-            <div class="product-card">
-              <img
-                src="<%= product.image %>"
-                class="product-img"
-                alt="..."
-                width="80px"/>
-                <div class="card-info">
-                  <div class="name-price">
-                    <p class="card-name"><%= product.name %></p>
-                    <p class="card-price">$<%= product.price %></p>
-                  </div>
-                  <p class="card-brand">Brand: <%= product.brand %></p>
-                  <p class="card-brand">Quantity: <%= product.quantity %></p>
+          <a href="/products/<%=product.id%>" class="product-card">
+            <img
+              src="<%= product.displayImage %>"
+              class="product-img"
+              alt="<%= product.name %>"
+              width="80px"/>
+            <div class="card-info">
+                <div class="name-price">
+                  <p class="card-name"><%= product.name %></p>
+                  <p class="card-price">$<%= product.price %></p>
+                </div>
+                <p class="card-brand">Brand: <%= product.brand %></p>
+                <p class="card-quantity">Quantity: <%= product.quantity %></p>
+                <span class="category"><%= product.category %></span>  
             </div>
-          </a>
-        <% }) %>
+        </a>
+      <% }) %>
       </div> 
     </div>
   </main>

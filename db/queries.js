@@ -30,4 +30,12 @@ const getAllProducts = async (query = null) => {
     }
 };
 
-export default { getAllCategories, insertNewProduct, getAllProducts };
+async function filterById(id) {
+  const rows = pool.query(
+    "SELECT products.*, categories.category FROM products JOIN categories ON products.category_id = categories.id WHERE products.id = $1",
+        [id]
+  );
+  return rows;
+}
+
+export default { getAllCategories, insertNewProduct, getAllProducts, filterById };

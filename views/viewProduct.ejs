@@ -1,0 +1,34 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+<body>
+  <%- include("./partials/nav.ejs") %>
+  <main class="page-content">
+    <div class="product-content">
+
+
+    <a href="/products" class="backBtn"><< Return to Products</a>
+    <div class="view-product-container">
+      <div class="view-image">
+        <img
+          src="<%= product.imageData %>"
+          class="view-product-img"
+          alt="<%= product.name %>"
+          width="100px"/>
+        </div>
+        <div class="view-info">
+          <div class="name-category">
+            <h1><%= product.name %></h1>
+            <h1>$<%=product.price %></h1>
+          </div>
+          <h4 class="product-category">
+            <%= product.category %>
+          </h4>
+          <h4>Brand: <%=product.brand %></h4>
+          <br />
+          <p class="product-description"><%= product.description %></p>
+          <h4>Quantity: <%=product.quantity %></h4>
+        </div>
+      </div>  
+  </main>
+</body>
+</html>

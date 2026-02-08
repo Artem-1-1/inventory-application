@@ -3,23 +3,14 @@ import queries from '../db/queries.js';
 
 const router = Router();
 
-import { getAddProductPage, createProduct, uploadImageMiddleware} from '../controllers/productsController.js'
+import { getAddProductPage, createProduct, uploadImageMiddleware, showProduct, getAllProducts} from '../controllers/productsController.js'
 
-router.route("/").get(async(req, res) => {
-  try {
-    const products = await queries.getAllProducts(); 
-    res.render("products", {
-            title: "All products",
-            products: products || [] 
-        });
-  } catch(err) {
-    console.error(err);
-    res.status(500).send("Server Error");
-  }
-});
+router.get('/', getAllProducts);
 
 router.get('/new', getAddProductPage);
 
 router.post('/new', uploadImageMiddleware, createProduct);
+
+router.get('/:id', showProduct);
 
 export default router;
