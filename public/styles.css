@@ -1,5 +1,7 @@
 :root {
   --light-purple: #B47AEA;
+  --dark-red: #D00000;
+  --dark-green: #018E42;
 }
 
 * {
@@ -179,4 +181,63 @@ a {
 
 .product-description {
   margin-bottom: 1rem;
+}
+
+.btn-dialog,
+.btnContainer {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+}
+
+.deleteBtn,
+.editBtn {
+  padding: 0 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.editBtn {
+  background-color: var(--dark-green);
+}
+
+.deleteBtn {
+  background-color: var(--dark-red);
+}
+
+#dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 350px;
+  position: fixed;     
+  top: 50%;            
+  left: 50%;           
+  transform: translate(-50%, -50%); 
+  margin: 0;           
+}
+
+#dialog p {
+  margin-bottom: 1rem;
+}
+
+#dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+#password {
+  width: 70%;
+  padding: 8px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#closeBtn,
+#submitBtn {
+  padding: 0.2rem;
 }

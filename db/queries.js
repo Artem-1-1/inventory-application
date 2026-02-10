@@ -38,4 +38,11 @@ async function filterById(id) {
   return rows;
 }
 
-export default { getAllCategories, insertNewProduct, getAllProducts, filterById };
+async function deleteProduct(id) {
+    await pool.query(
+        "DELETE FROM products WHERE id = $1",
+        [id]
+    );
+}
+
+export default { getAllCategories, insertNewProduct, getAllProducts, filterById, deleteProduct };

@@ -65,6 +65,14 @@ export async function showProduct(req, res) {
     product.imageData = `data:${mimeType};base64,${base64Image}`;
   }
 
-  // console.log(product)
+  console.log(product)
   res.render("viewProduct", { product: product , title : product.name});
 };
+
+export async function deleteProduct(req, res) {
+    const id = req.params.id;
+
+    await queries.deleteProduct(id);
+
+    res.redirect("/products");
+}
