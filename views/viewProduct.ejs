@@ -27,7 +27,7 @@
           <h4>Quantity: <%=product.quantity %></h4>
         </div>
         <div class="btnContainer">
-          <button class="editBtn open-modal">Edit</button>
+          <button data-id="<%= product.id %>" class="editBtn open-modal">Edit</button>
           <button data-id="<%= product.id %>" type="submit" class="deleteBtn open-modal">Delete</button>
         </div>
       </div>

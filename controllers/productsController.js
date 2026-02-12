@@ -65,7 +65,7 @@ export async function showProduct(req, res) {
     product.imageData = `data:${mimeType};base64,${base64Image}`;
   }
 
-  console.log(product)
+  // console.log(product)
   res.render("viewProduct", { product: product , title : product.name});
 };
 
@@ -75,4 +75,45 @@ export async function deleteProduct(req, res) {
     await queries.deleteProduct(id);
 
     res.redirect("/products");
+}
+
+export async function editProductGet(req, res) {
+    const id = req.params.id;
+    const products = await queries.filterById(id);
+    const categories = await queries.getAllCategories();
+    
+    const product = products.rows[0]; 
+
+    if (product && product.image) {
+    const mimeType = getFileType(product.image);
+    const base64Image = product.image.toString('base64');
+    product.imageData = `data:${mimeType};base64,${base64Image}`;
+  }
+
+    // console.log(product)
+    res.render("editProduct", { product: product , listedCategories: categories, title : `Edit ${product.name}`});
+}
+
+export async function editProductPost(req, res) {
+  const id = req.params.id;
+  let imageBuffer = null;
+
+  const { name, quantity, price, category, brand, description } = req.body;
+
+  if (req.file) {
+    imageBuffer = req.file.buffer;
+  }
+
+  await queries.editProduct({
+    id,
+    name,
+    quantity,
+    price,
+    category,
+    brand,
+    image: imageBuffer,
+    description,
+  });
+
+  res.redirect(`/products/${id}`);
 }

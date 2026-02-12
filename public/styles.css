@@ -134,6 +134,7 @@ a {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s;
+  align-self: center;
 }
 
 .addProductsBtn,
@@ -164,6 +165,10 @@ a {
 .view-product-img {
   width: 30vw;
   max-width: 300px;
+}
+
+.view-product-container textarea {
+  width: 100%;
 }
 
 .name-category {
@@ -240,4 +245,8 @@ a {
 #closeBtn,
 #submitBtn {
   padding: 0.2rem;
+}
+
+.name-category > input {
+  width: 75%;
 }

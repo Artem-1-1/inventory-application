@@ -3,11 +3,15 @@ const closeBtn = document.getElementById('closeBtn');
 const submitBtn = document.getElementById('submitBtn');
 const passwordInput = document.getElementById('password');
 
-let currentDeleteId = null;
+if (!dialog || !closeBtn || !submitBtn || !passwordInput) {
+} else {
+  let currentProductId = null;
+  let currentAction = null;
 
 document.addEventListener('click', (e) => {
   if (e.target.classList.contains('open-modal')) {
-    productIdToDelete = e.target.dataset.id;
+    currentProductId = e.target.dataset.id;
+    currentAction = e.target.classList.contains('editBtn') ? 'edit' : 'delete';
     dialog.showModal();
   }
 });
@@ -22,12 +26,15 @@ submitBtn.onclick = async () => {
   });
 
   if (checkRes.ok) {
-    const deleteRes = await fetch(`/products/delete/${productIdToDelete}`, {
-      method: 'POST'
-    });
-
-    if (deleteRes.ok) {
-      window.location.href = '/products';
+    if (currentAction === 'edit') {
+      window.location.href = `/products/edit/${currentProductId}`;
+    } else {
+      const deleteRes = await fetch(`/products/delete/${currentProductId}`, {
+        method: 'POST'
+      });
+      if (deleteRes.ok) {
+        window.location.href = '/products';
+      }
     }
   } else {
     alert('Invalid Password!');
@@ -39,3 +46,4 @@ dialog.addEventListener('close', () => {
 });
 
 closeBtn.onclick = () => dialog.close();
+}
