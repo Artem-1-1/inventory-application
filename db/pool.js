@@ -1,14 +1,12 @@
 import { Pool } from "pg";
 
+const connectionString = (process.env.NEON_URL || process.env.LOCAL_URL) + "?sslmode=verify-full";
+
 const pool = new Pool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: parseInt(process.env.DB_PORT, 10),
-  max: 20,
-  idleTimeoutMills: 30000,
-  connectionTimeoutMills: 2000,
+  connectionString,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 export default pool;
