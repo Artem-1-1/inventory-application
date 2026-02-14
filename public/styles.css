@@ -256,3 +256,9 @@ a {
 .name-category > input {
   width: 75%;
 }
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
