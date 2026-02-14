@@ -57,14 +57,8 @@ export const getAllProducts = async (req, res) => {
 export async function showProduct(req, res) {
   const id = req.params.id;
   const products = await queries.filterById(id);
-  const product = products.rows[0];
+  const product = formatProductImage(products.rows[0]);
   
-  if (product && product.image) {
-    const mimeType = getFileType(product.image);
-    const base64Image = product.image.toString('base64');
-    product.imageData = `data:${mimeType};base64,${base64Image}`;
-  }
-
   // console.log(product)
   res.render("viewProduct", { product: product , title : product.name});
 };
@@ -82,13 +76,7 @@ export async function editProductGet(req, res) {
     const products = await queries.filterById(id);
     const categories = await queries.getAllCategories();
     
-    const product = products.rows[0]; 
-
-    if (product && product.image) {
-    const mimeType = getFileType(product.image);
-    const base64Image = product.image.toString('base64');
-    product.imageData = `data:${mimeType};base64,${base64Image}`;
-  }
+    const product = formatProductImage(products.rows[0]); 
 
     // console.log(product)
     res.render("editProduct", { product: product , listedCategories: categories, title : `Edit ${product.name}`});
