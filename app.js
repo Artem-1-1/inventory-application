@@ -15,10 +15,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT);
-
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
+
+app.use((req, res) => {
+  res.status(404).render("404", {title: "Page not Found"});
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT);
 
 export default app;
